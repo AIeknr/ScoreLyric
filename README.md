@@ -31,7 +31,7 @@ ScoreLyric 是一个面向音乐学习者、教师与歌词整理者的歌谱识
 
 最终选择深色全屏月夜主视觉，以歌词为第一视觉焦点，在右下方展示最近收录专辑。搜索、专辑切换、详情跳转和移动端布局均已落地。
 
-![ScoreLyric 首页第二版](docs/screenshots/homepage-v2.png)
+![ScoreLyric 首页第二版](docs/screenshots/homepage-v2-current.png)
 
 ## 产品原则
 
