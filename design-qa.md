@@ -1,69 +1,64 @@
-# ScoreLyric 首页设计 QA
+# ScoreLyric 首页与歌词库设计 QA
 
 **Source visual truth**
 
-- Path: `/workspace/scratch/76a138749e36/generated_images/exec-dbdaa2fa-9aab-4753-a4af-d782e47620a6.png`
-- Source pixels: 1487 × 1058
-- Intended CSS viewport/state: 1440 × 1024，桌面端，默认展示《月亮代表我的心》
+- Path: `/Users/aikenr/.codex/generated_images/01a02e7a-202c-7751-99a4-90173dead35f/exec-c8549cc9-a25e-4a67-8347-0c65e4462203.png`
+- Source pixels: 882 × 1784
+- Selected direction: 第二版（白色博物馆式歌词库）
 
 **Rendered implementation**
 
-- URL/capture source: Cloud Browser 本地预览根页面；最终浏览器截图已在 QA 会话中以图片证据输出
-- Browser viewport: 1363 × 936；页面 scroll width/height 同为 1363 × 936，无桌面端溢出
-- Comparison normalization: 参考图与实现均放入 1440 × 1024 的同尺寸画布，再以 0.46 比例并排呈现在同一张浏览器对照截图中；参考图按 cover 裁切，实现由 1440 × 1024 iframe 原生渲染
-- Additional responsive evidence: 390 × 844 iframe 浏览器实拍；页面自然纵向滚动，专辑列表横向滚动，无元素重叠或横向页面溢出
+- URL: `http://localhost:4173/`
+- Desktop viewport: 1280 × 720 CSS px, device pixel ratio 2
+- Mobile viewport: 390 × 844 CSS px, device pixel ratio 2
+- Desktop captures: `work/design-qa/outputs-home-first-screen.png`, `work/design-qa/outputs-home-library-screen.png`, `work/design-qa/outputs-library-categories.png`, `work/design-qa/outputs-library-recent.png`
+- Mobile captures: `work/design-qa/outputs-home-mobile.png`, `work/design-qa/outputs-library-mobile.png`
+- Combined comparison: `work/design-qa/outputs-design-comparison.png` (2026 × 1440)
+- State: 一张精选专辑激活，搜索关闭，首页/歌词库/分类/最近更新均已实拍
 
 **Full-view comparison evidence**
 
-- 同一对照输入中检查了顶栏、搜索、月夜主视觉、主歌词信息、CTA 与五张专辑封面的相对位置。
-- 最终实现保留参考图的暗色月夜、右侧树影、左下主标题、右下封面带和极简导航；月亮位置与海面反光在第二轮资产修正后与参考视觉重心一致。
+- 参考图与实现截图已合成在同一对照图中检查。
+- 实现保留了选定方案的暗色动态首页与白色独立歌词库；根据用户后续要求，首页由参考图的半屏改为严格 `100svh`，歌词库从第二屏开始，属于有意产品偏离。
 
 **Focused region comparison evidence**
 
-- 顶部区域：检查了文字标志、双导航、上传按钮、宽搜索线与图标对齐。
-- 左下区域：检查了标题单行显示、英文副题、歌手/专辑信息、歌词摘录和“查看歌词”基线。
-- 右下区域：检查了五张真实封面、封面裁切、标题截断和收录序号。
-- 未另存局部裁切图：关键区域已在未缩放的桌面浏览器截图中单独检查，并在同画布对照图中复核层级和位置。
+- 首屏：导航、搜索、精选歌词、精选专辑带、轮播按钮与下滑提示在独立 1280 × 720 截图中检查。
+- 歌词库：歌手、全部专辑、拼音索引在第二屏截图中检查；语言、年代、曲风、歌谱来源和收藏栏目另行检查。
+- 最近更新：单独检查五栏高度交错的瀑布流、封面裁切、歌词摘录与时间信息。
 
 **Required fidelity surfaces**
 
-- Fonts and typography: 标题使用 Georgia/宋体回退形成参考中的编辑感衬线层级；小型导航、元数据和英文副题字重、行高与字距均已检查；桌面标题保持单行，移动端可读。
-- Spacing and layout rhythm: 顶部 104px 导航区、居中搜索、左下内容和右下封面带形成与参考相同的四区构图；桌面无溢出，移动端改为纵向内容与横向封面轨道。
-- Colors and tokens: 主色为蓝黑、银白与低饱和灰；使用真实夜景图、半透明遮罩和阴影控制可读性，无彩色装饰噪声。
-- Image quality and asset fidelity: 首页主视觉与六张专辑封面均为真实 raster 资源；封面使用 object-fit cover；没有用 CSS 绘画、占位框、emoji 或手写 SVG 替代可见资产。
-- Copy and content: 首页只保留歌词库、识别歌谱、搜索、最近收录与查看歌词；AI 服务中心、系统状态和管理员头像已移除。
-- Icons: 可见图标来自 Phosphor Icons，同一线性风格，尺寸与按钮基线一致。
-- Accessibility: 搜索有可见 label/placeholder，按钮和封面具有 aria-label，图片有 alt，键盘 focus 可见，支持 prefers-reduced-motion。
-
-**Comparison history**
-
-1. First comparison — blocked
-   - [P1] 月亮位于实现右上方，而参考图在左中区域，视觉重心明显漂移。
-   - Fix: 以第三版参考图为构图依据，重新生成无 UI、无文字的月夜背景 `hero-moonlit-sea-v2.png` 并替换首页资产。
-   - Post-fix evidence: 第二张并排浏览器截图显示月亮、海面反光与右侧树影已回到参考构图。
-2. Second comparison — blocked
-   - [P1] 主标题在 1363px 桌面视口换成两行，改变了参考图的左下层级。
-   - Fix: 将桌面标题最大字号调至 64px，并把信息区宽度调整为 `min(520px, 38vw)`。
-   - Post-fix evidence: 最终桌面截图与最终并排截图中标题均保持单行，且不遮挡封面带。
-3. Final comparison — passed
-   - 无剩余可操作的 P0/P1/P2 视觉问题。
-   - P3 acceptable: 封面题材与参考图同属复古摄影/植物画方向，但不是逐像素相同的原图；这是生成式 DEMO 资产的预期差异。
+- Fonts and typography: 中文主标题和歌词使用 Georgia/宋体回退，导航与元数据使用现有无衬线体；桌面和移动端字号、行高与截断正常。
+- Spacing and layout rhythm: 首页准确占满第一屏；歌词库使用稳定的分隔线、六栏资源带和五栏分类；移动端改为横向滑动与双栏分类。
+- Colors and visual tokens: 首页色彩可随精选封面变化；歌词库始终使用白、炭黑和固定朱红强调色，不继承 Hero 色相。
+- Image quality and asset fidelity: 全部使用项目内真实 raster 封面资产，`object-fit: cover`，无占位图、CSS 绘画或 emoji 替代。
+- Copy and content: 精选专辑置于首页；歌词库包含歌手、专辑、语言、年代、曲风、来源、收藏与最近更新。
 
 **Primary interactions tested**
 
-- 搜索“茉莉花”显示正确结果。
-- 点击《那些年》封面后主标题与主视觉状态切换。
-- 点击“查看歌词”进入 `/songs/those-years`，真实专辑封面可见。
-- `/recognize` 上传工作台可访问。
-- `/admin/ai-services` 构建测试返回 404。
-- 在全新浏览器标签中重复导航后检查应用日志：无应用级 error/warning；浏览器扩展自身的 metadata 错误已排除在应用日志之外。
+- 自动轮播在预览期间从《月亮代表我的心》切换至后续精选项。
+- 点击“下一张精选专辑”后，标题从《那些年》切换为《茉莉花》，且只有一个 `aria-pressed=true` 的选中项。
+- 点击“浏览歌词库”正确滚动到第二屏。
+- 搜索、歌曲详情链接、上传入口保留可交互。
+- 桌面端 1280 × 720 与移动端 390 × 844 均通过浏览器实拍检查；应用控制台无 error。
+
+**Comparison history**
+
+1. Initial implementation comparison — passed
+   - 无可执行的 P0/P1/P2 差异。
+   - 用户要求的首屏整屏化、自动轮播和更丰富分类已作为明确产品覆盖，不按原始静态参考图的半屏比例判为偏差。
+   - P3: 歌手头像暂以项目封面圆形裁切表现；待真实歌手资料入库后可替换。
 
 **Implementation checklist**
 
-- [x] 删除 AI 服务中心入口和路由
-- [x] 使用真实主视觉和专辑封面
-- [x] 实现搜索、专辑切换、详情跳转
-- [x] 完成桌面与 390px 移动端检查
-- [x] 完成构建与渲染测试
+- [x] 首页严格占满第一屏
+- [x] 精选专辑位于首页并驱动背景与歌词
+- [x] 自动轮播、手动切换、选中态与过渡动画
+- [x] 服务端传入精选配置，便于后台数据源替换
+- [x] 独立白色歌词库视觉系统与丰富分类
+- [x] 最近更新五栏瀑布流
+- [x] 桌面和移动端实拍验收
+- [x] ESLint 通过，Vinext 生产构建通过
 
 final result: passed

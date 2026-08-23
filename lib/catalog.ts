@@ -14,6 +14,17 @@ export type Song = {
   lyrics: { type: string; zh: string[]; en: string[]; repeats?: number }[];
 };
 
+// Server-side selection source. Replace this list with persisted admin settings
+// when the local NAS database is connected; the homepage UI needs no changes.
+export const featuredSongSlugs = [
+  "the-moon-represents-my-heart",
+  "those-years",
+  "jasmine-flower",
+  "auld-lang-syne",
+  "orchid-grass",
+  "farewell",
+] as const;
+
 export const songs: Song[] = [
   {
     slug: "the-moon-represents-my-heart",

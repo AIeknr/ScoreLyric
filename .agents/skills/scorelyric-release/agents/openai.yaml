@@ -1,0 +1,4 @@
+interface:
+  display_name: "ScoreLyric Release"
+  short_description: "Verify, document, commit, and push ScoreLyric updates"
+  default_prompt: "Update ScoreLyric, refresh README and screenshots, verify, commit, and push."

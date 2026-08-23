@@ -243,3 +243,118 @@ img { display: block; max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* Homepage + library, selected Product Design direction */
+.catalog-page { background: #fff; }
+.catalog-page .cinema-home { height: 100svh; min-height: 680px; }
+.catalog-page .cinema-backdrop-enter { animation: hero-reveal .75s ease both; }
+@keyframes hero-reveal { from { opacity: .25; transform: scale(1.018); } to { opacity: 1; transform: scale(1); } }
+.catalog-page .cinema-shade { background: rgba(2,12,17,.48); box-shadow: inset 0 -280px 150px rgba(0,7,10,.82), inset 340px 0 220px rgba(0,8,12,.46); }
+.catalog-page .cinema-search-wrap { top: clamp(112px, 15vh, 154px); }
+.catalog-page .cinema-feature { bottom: clamp(72px, 9vh, 100px); width: min(440px, 31vw); animation: copy-reveal .55s ease both; }
+@keyframes copy-reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.catalog-page .cinema-feature h1 { font-size: clamp(37px, 3.3vw, 58px); }
+.catalog-page .cinema-feature blockquote { margin-bottom: 18px; }
+.catalog-page .cinema-browse { bottom: 38px; width: min(67vw, 980px); }
+.catalog-page .cinema-carousel { grid-template-columns: repeat(6, minmax(90px, 1fr)); }
+.catalog-page .album-card { box-shadow: none; background: transparent; }
+.catalog-page .album-card img { aspect-ratio: 1 / 1.08; }
+.catalog-page .album-card span { min-height: 49px; padding: 9px 4px; background: transparent; }
+.catalog-page .album-card.selected img { outline: 2px solid #d46347; outline-offset: -2px; }
+.catalog-page .album-card.selected strong { color: #f07859; }
+.catalog-page .cinema-carousel-controls { position: absolute; right: clamp(24px,4vw,64px); top: -5px; display: flex; gap: 4px; }
+.catalog-page .cinema-carousel-controls button { display: grid; place-items: center; width: 30px; height: 30px; padding: 0; color: #fff; border: 1px solid rgba(255,255,255,.28); background: rgba(0,0,0,.15); cursor: pointer; }
+.hero-scroll-cue { position: absolute; z-index: 8; left: 50%; bottom: 15px; display: flex; align-items: center; gap: 7px; color: rgba(255,255,255,.66); font-size: 9px; letter-spacing: .15em; transform: translateX(-50%); }
+.hero-scroll-cue svg { animation: scroll-cue 1.8s ease-in-out infinite; }
+@keyframes scroll-cue { 50% { transform: translateY(4px); } }
+.search-results a { width: 100%; min-height: 70px; display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 14px; padding: 9px; text-align: left; }
+.search-results a:hover, .search-results a:focus-visible { background: #e8e6de; outline: 0; }
+.search-results a img { width: 48px; height: 48px; object-fit: cover; }
+.search-results a span, .search-results a strong, .search-results a small { display: block; }
+
+.library-home { min-height: 100vh; scroll-margin-top: 0; color: #191c1b; background: #fff; }
+.library-inner { width: min(1320px, calc(100% - 64px)); margin: 0 auto; padding: 68px 0 90px; }
+.library-title { min-height: 90px; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; padding-bottom: 26px; border-bottom: 1px solid #dededb; }
+.library-title p, .recent-section header p { margin: 0 0 8px; color: #b6543b; font-size: 9px; font-weight: 800; letter-spacing: .24em; }
+.library-title h2, .recent-section header h2 { margin: 0; font: 500 42px/1 Georgia, "Songti SC", serif; }
+.library-title nav { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 13px; color: #6f7471; font-size: 10px; }
+.library-title nav span { margin-right: 12px; color: #222; }
+.library-title nav a:hover { color: #b6543b; }
+.library-row { padding: 34px 0 38px; border-bottom: 1px solid #dededb; scroll-margin-top: 20px; }
+.library-row > header { margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between; }
+.library-row h3, .index-column h3 { margin: 0; font: 500 22px/1.2 Georgia, "Songti SC", serif; }
+.library-row > header a, .recent-section > header > a { display: flex; align-items: center; gap: 6px; color: #777c79; font-size: 10px; }
+.artist-strip, .album-strip { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 24px; }
+.artist-strip a, .album-strip a { min-width: 0; }
+.artist-strip img { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; filter: grayscale(.78); }
+.artist-strip strong, .artist-strip small, .album-strip strong, .album-strip small { display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.artist-strip strong, .album-strip strong { margin-top: 13px; font: 500 15px/1.3 Georgia, "Songti SC", serif; }
+.artist-strip small, .album-strip small { margin-top: 5px; color: #868b88; font-size: 9px; }
+.album-strip img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.artist-strip a:hover img, .album-strip a:hover img { opacity: .78; }
+.library-index { display: grid; grid-template-columns: .8fr .8fr 1fr 1fr 1.35fr; padding: 42px 0; border-bottom: 1px solid #dededb; }
+.index-column { min-width: 0; padding: 0 28px; border-left: 1px solid #e4e4e1; }
+.index-column:first-child { padding-left: 0; border-left: 0; }
+.index-column h3 { margin-bottom: 19px; font-size: 18px; }
+.index-column a { display: flex; justify-content: space-between; gap: 15px; padding: 5px 0; color: #5e6360; font-size: 11px; }
+.index-column a:hover { color: #b6543b; }
+.index-column a span { color: #aaa; }
+.index-column.personal h3 { display: flex; align-items: center; gap: 8px; }
+.recent-section { padding-top: 62px; }
+.recent-section > header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; }
+.recent-masonry { columns: 5 210px; column-gap: 16px; }
+.recent-card { break-inside: avoid; margin: 0 0 16px; border: 1px solid #dfdfdc; background: #fff; transition: transform .2s ease, border-color .2s ease; }
+.recent-card:hover { transform: translateY(-3px); border-color: #a8aaa7; }
+.recent-card img { width: 100%; height: 150px; object-fit: cover; }
+.recent-card-1 img, .recent-card-4 img { height: 220px; }
+.recent-card-2 img { height: 105px; }
+.recent-card > a > div { padding: 15px; }
+.recent-card h3 { margin: 0; font: 500 18px/1.2 Georgia, "Songti SC", serif; }
+.recent-artist { margin: 6px 0 11px; color: #777c79; font-size: 9px; }
+.recent-card blockquote { margin: 0 0 14px; color: #565b58; font: 12px/1.7 Georgia, "Songti SC", serif; }
+.recent-card time { color: #a2a5a2; font-size: 9px; }
+.loading-more { display: flex; justify-content: center; align-items: center; gap: 9px; padding-top: 30px; color: #8d918e; font-size: 10px; letter-spacing: .08em; }
+.loading-more span { width: 6px; height: 6px; border-radius: 50%; background: #b6543b; box-shadow: 12px 0 #c9c9c5, 24px 0 #dededb; margin-right: 24px; }
+
+@media (max-width: 980px) {
+  .catalog-page .cinema-home { min-height: 760px; }
+  .catalog-page .cinema-feature { bottom: 250px; width: min(500px,60vw); }
+  .catalog-page .cinema-browse { left: 24px; width: calc(100% - 48px); }
+  .catalog-page .cinema-carousel { display: grid; grid-template-columns: repeat(6, 132px); overflow-x: auto; }
+  .library-title { align-items: flex-start; flex-direction: column; }
+  .library-title nav { justify-content: flex-start; }
+  .artist-strip, .album-strip { grid-template-columns: repeat(3,1fr); }
+  .library-index { grid-template-columns: repeat(2,1fr); }
+  .index-column { padding: 26px; border-bottom: 1px solid #e4e4e1; }
+  .index-column:nth-child(odd) { padding-left: 0; border-left: 0; }
+}
+
+@media (max-width: 640px) {
+  .catalog-page .cinema-home { height: 100svh; min-height: 720px; }
+  .catalog-page .cinema-backdrop { height: 100%; object-position: 58% center; }
+  .catalog-page .cinema-shade { box-shadow: inset 0 -490px 170px rgba(0,7,10,.96); }
+  .catalog-page .cinema-feature { top: 190px; bottom: auto; width: calc(100% - 36px); }
+  .catalog-page .cinema-feature h1 { font-size: 38px; }
+  .catalog-page .cinema-feature .cinema-english, .catalog-page .cinema-feature blockquote { display: none; }
+  .catalog-page .cinema-browse { bottom: 32px; }
+  .catalog-page .cinema-carousel { grid-template-columns: repeat(6, 105px); gap: 9px; }
+  .catalog-page .album-card img { aspect-ratio: 1; }
+  .catalog-page .album-card span { min-height: 43px; }
+  .catalog-page .cinema-carousel-controls { top: -4px; right: 0; }
+  .hero-scroll-cue { display: none; }
+  .library-inner { width: calc(100% - 32px); padding-top: 44px; }
+  .library-title h2, .recent-section header h2 { font-size: 34px; }
+  .library-title nav { gap: 10px; }
+  .artist-strip, .album-strip { display: flex; overflow-x: auto; gap: 14px; padding-bottom: 8px; }
+  .artist-strip a, .album-strip a { min-width: 116px; }
+  .artist-strip img { width: 78px; height: 78px; }
+  .library-index { grid-template-columns: 1fr 1fr; }
+  .index-column { padding: 24px 14px; }
+  .index-column.personal { grid-column: 1 / -1; padding-left: 0; border-left: 0; }
+  .recent-masonry { columns: 2 135px; column-gap: 10px; }
+  .recent-card { margin-bottom: 10px; }
+  .recent-card img, .recent-card-1 img, .recent-card-4 img { height: 132px; }
+  .recent-card-2 img { height: 92px; }
+  .recent-card > a > div { padding: 12px; }
+  .recent-card blockquote { display: none; }
+}
